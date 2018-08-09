@@ -16,13 +16,8 @@ import 'src/node_client.dart';
 export 'package:http/http.dart'
     show
         BaseClient,
-        BaseRequest,
-        BaseResponse,
-        StreamedRequest,
-        StreamedResponse,
         Request,
         Response,
-        ByteStream,
         ClientException;
 
 export 'src/node_client.dart';
@@ -57,7 +52,7 @@ Future<Response> get(url, {Map<String, String> headers}) =>
 Future<Response> post(url,
         {Map<String, String> headers, body, Encoding encoding}) =>
     _withClient((client) =>
-        client.post(url, headers: headers, body: body, encoding: encoding));
+        client.post(url, body, headers: headers, encoding: encoding));
 
 /// Sends an HTTP PUT request with the given headers and body to the given URL,
 /// which can be a [Uri] or a [String].
@@ -67,7 +62,7 @@ Future<Response> post(url,
 Future<Response> put(url,
         {Map<String, String> headers, body, Encoding encoding}) =>
     _withClient((client) =>
-        client.put(url, headers: headers, body: body, encoding: encoding));
+        client.put(url, body, headers: headers, encoding: encoding));
 
 /// Sends an HTTP PATCH request with the given headers and body to the given
 /// URL, which can be a [Uri] or a [String].
@@ -77,7 +72,7 @@ Future<Response> put(url,
 Future<Response> patch(url,
         {Map<String, String> headers, body, Encoding encoding}) =>
     _withClient((client) =>
-        client.patch(url, headers: headers, body: body, encoding: encoding));
+        client.patch(url, body, headers: headers, encoding: encoding));
 
 /// Sends an HTTP DELETE request with the given headers to the given URL, which
 /// can be a [Uri] or a [String].
